@@ -20,8 +20,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 const pageDescription =
-  "Review the terms that apply when accessing and using the Qorvexa
-Innovations company website and its public content.";
+  "Review the terms that apply when accessing and using the Qorvexa Innovations company website and its public content.";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
@@ -29,26 +28,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
   openGraph: {
     type: "website",
-    title: "Terms and Conditions | Qorvexa
-Innovations",
+    title: "Terms and Conditions | Qorvexa Innovations",
     description: pageDescription,
     url: "/terms",
-    siteName: "Qorvexa
-Innovations",
+    siteName: "Qorvexa Innovations",
     images: [
       {
         url: "/images/company/nexora-og.svg",
         width: 1200,
         height: 630,
-        alt: "Qorvexa
-Innovations",
+        alt: "Qorvexa Innovations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms and Conditions | Qorvexa
-Innovations",
+    title: "Terms and Conditions | Qorvexa Innovations",
     description: pageDescription,
     images: ["/images/company/nexora-og.svg"],
   },
@@ -70,8 +65,7 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Legal"
         title="Terms and Conditions"
-        description="These terms set out the basic rules for using the Qorvexa
-Innovations public website and the information made available through it."
+        description="These terms set out the basic rules for using the Qorvexa Innovations public website and the information made available through it."
       >
         <Badge className="border-white/70 bg-white/70 text-slate-700">
           Last updated: July 14, 2026
@@ -88,7 +82,7 @@ Innovations public website and the information made available through it."
               <div>
                 <h2 className="font-extrabold text-slate-950">Scope of these terms</h2>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  These terms apply to the public company website. A Nexora product, customer
+                  These terms apply to the public company website. A Qorvexa product, customer
                   engagement, partnership, or paid service may be governed by separate terms,
                   policies, proposals, or agreements. If a separate agreement conflicts with this
                   page for that specific relationship, the separate agreement will control.
@@ -128,9 +122,8 @@ Innovations public website and the information made available through it."
                 <div className="border-b border-slate-200 pb-10">
                   <p className="text-lg leading-8 text-slate-600">
                     By accessing or using this website, you agree to these Terms and Conditions. If
-                    you do not agree, please stop using the website. References to “Nexora,” “we,”
-                    “us,” or “our” mean Qorvexa
-Innovations in the context of this website.
+                    you do not agree, please stop using the website. References to “Qorvexa,” “we,”
+                    “us,” or “our” mean Qorvexa Innovations in the context of this website.
                   </p>
                 </div>
               </Reveal>
@@ -184,8 +177,7 @@ Innovations in the context of this website.
                       <p>
                         Unless stated otherwise, the website’s original text, visual design,
                         interface elements, graphics, branding, logos, and other content are owned
-                        by Qorvexa
-Innovations or used with appropriate permission. Product names and
+                        by Qorvexa Innovations or used with appropriate permission. Product names and
                         third-party marks remain the property of their respective owners.
                       </p>
                       <p>
@@ -267,8 +259,7 @@ Innovations or used with appropriate permission. Product names and
                         secure, or free from errors.
                       </p>
                       <p>
-                        To the maximum extent permitted by applicable law, Qorvexa
-Innovations will
+                        To the maximum extent permitted by applicable law, Qorvexa Innovations will
                         not be liable for indirect, incidental, special, or consequential loss
                         arising solely from access to, inability to access, or reliance on this
                         public website or a third-party link. Nothing in these terms excludes
@@ -309,8 +300,7 @@ Innovations will
                     </div>
                     <p className="mt-6 leading-8 text-slate-600">
                       For a question about these terms or permission to use website content,
-                      contact Qorvexa
-Innovations at{" "}
+                      contact Qorvexa Innovations at{" "}
                       <a
                         className="font-bold text-indigo-700 underline decoration-indigo-200 underline-offset-4 transition hover:text-indigo-900"
                         href={`mailto:${CONTACT_EMAIL}`}
@@ -322,7 +312,7 @@ Innovations at{" "}
                     <div className="mt-6 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-7 text-slate-600">
                       <Scale className="mt-1 size-4 shrink-0 text-slate-500" aria-hidden="true" />
                       <p>
-                        If you are evaluating a specific Nexora product or engagement, ask for the
+                        If you are evaluating a specific Qorvexa product or engagement, ask for the
                         terms that apply to that product or arrangement rather than relying only on
                         this general website page.
                       </p>

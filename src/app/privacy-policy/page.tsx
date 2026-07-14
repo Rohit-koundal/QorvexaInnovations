@@ -18,8 +18,7 @@ import { Reveal } from "@/components/shared/Reveal";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 const pageDescription =
-  "Read how Qorvexa
-Innovations may collect, use, protect, and manage information when you visit our website or contact us.";
+  "Read how Qorvexa Innovations may collect, use, protect, and manage information when you visit our website or contact us.";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -27,26 +26,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
     type: "website",
-    title: "Privacy Policy | Qorvexa
-Innovations",
+    title: "Privacy Policy | Qorvexa Innovations",
     description: pageDescription,
     url: "/privacy-policy",
-    siteName: "Qorvexa
-Innovations",
+    siteName: "Qorvexa Innovations",
     images: [
       {
         url: "/images/company/nexora-og.svg",
         width: 1200,
         height: 630,
-        alt: "Qorvexa
-Innovations",
+        alt: "Qorvexa Innovations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Qorvexa
-Innovations",
+    title: "Privacy Policy | Qorvexa Innovations",
     description: pageDescription,
     images: ["/images/company/nexora-og.svg"],
   },
@@ -68,8 +63,7 @@ export default function PrivacyPolicyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
-        description="This policy explains what information may be handled through the Qorvexa
-Innovations website, why it may be used, and the choices available to you."
+        description="This policy explains what information may be handled through the Qorvexa Innovations website, why it may be used, and the choices available to you."
       >
         <Badge className="border-white/70 bg-white/70 text-slate-700">
           Last updated: July 14, 2026
@@ -126,7 +120,7 @@ Innovations website, why it may be used, and the choices available to you."
               <Reveal>
                 <div className="border-b border-slate-200 pb-10">
                   <p className="text-lg leading-8 text-slate-600">
-                    This Privacy Policy applies to the public website operated under the Nexora
+                    This Privacy Policy applies to the public website operated under the Qorvexa
                     Innovations name. It does not automatically cover separate products, such as
                     Samira Collection, which may require their own product-specific privacy notices
                     before collecting customer or business data.
@@ -155,7 +149,7 @@ Innovations website, why it may be used, and the choices available to you."
                         When the website is deployed, hosting, security, or content-delivery
                         providers may process limited technical information such as IP address,
                         browser type, device type, requested pages, timestamps, and diagnostic
-                        logs. Nexora does not use this page to claim that every listed data type is
+                        logs. Qorvexa does not use this page to claim that every listed data type is
                         currently stored by us.
                       </p>
                     </div>
@@ -311,8 +305,7 @@ Innovations website, why it may be used, and the choices available to you."
                       </h2>
                     </div>
                     <p className="mt-6 leading-8 text-slate-600">
-                      For a privacy question or request, contact Qorvexa
-Innovations at{" "}
+                      For a privacy question or request, contact Qorvexa Innovations at{" "}
                       <a
                         className="font-bold text-indigo-700 underline decoration-indigo-200 underline-offset-4 transition hover:text-indigo-900"
                         href={`mailto:${CONTACT_EMAIL}`}
