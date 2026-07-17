@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, BriefcaseBusiness, CheckCircle2, ClipboardCheck, MapPin, Send, Sparkles } from "lucide-react";
+import { ArrowLeft, BriefcaseBusiness, CheckCircle2, ClipboardCheck, Send, Sparkles } from "lucide-react";
 
 import { CtaBand, FeatureStrip, PlaceholderNotice, SectionHeader } from "@/components/site/Sections";
 import { getJobBySlug, jobs } from "@/content/careers";
@@ -9,12 +9,17 @@ import { getJobBySlug, jobs } from "@/content/careers";
 type JobPageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return jobs.map((job) => ({ slug: job.slug }));
+  return jobs.length ? jobs.map((job) => ({ slug: job.slug })) : [{ slug: "role-template" }];
 }
 
 export async function generateMetadata({ params }: JobPageProps): Promise<Metadata> {
   const { slug } = await params;
   const job = getJobBySlug(slug);
+  if (!job && slug === "role-template") return {
+    title: "Job Detail Template",
+    description: "Prepared job-detail layout for future verified Qorvexa opportunities.",
+    robots: { index: false, follow: false },
+  };
   if (!job) return {};
   return {
     title: job.title,
@@ -27,6 +32,21 @@ export async function generateMetadata({ params }: JobPageProps): Promise<Metada
 export default async function JobDetailPage({ params }: JobPageProps) {
   const { slug } = await params;
   const job = getJobBySlug(slug);
+  if (!job && slug === "role-template") {
+    return (
+      <>
+        <section className="warm-grid min-h-[64vh] border-b border-[#e7e1d9] py-20">
+          <div className="site-shell flex min-h-[48vh] flex-col items-center justify-center text-center">
+            <p className="eyebrow">Job Detail Template</p>
+            <h1 className="section-title mx-auto mt-5">A complete role page, ready for verified opportunity data.</h1>
+            <p className="body-lead mx-auto mt-5">No active role is attached to this template. When a job is published from the careers content file, this route will present its location, work mode, experience, responsibilities, requirements, and approved application channel.</p>
+            <div className="mt-8"><PlaceholderNotice>This page is not an open position and is intentionally excluded from search indexing.</PlaceholderNotice></div>
+            <Link href="/careers" className="primary-button mt-8"><ArrowLeft className="size-4" aria-hidden="true" />Return to Careers</Link>
+          </div>
+        </section>
+      </>
+    );
+  }
   if (!job || !job.published) notFound();
 
   return (

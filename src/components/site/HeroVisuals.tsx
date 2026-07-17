@@ -219,7 +219,7 @@ export function StudioScene({
         </>
       ) : (
         <>
-          {[18, 43, 68].map((left, index) => (
+          {[18, 43, 68].map((left) => (
             <div key={left} className="absolute bottom-[15%] h-[18%] w-[22%]" style={{ left: `${left}%` }}>
               <div className="absolute inset-x-0 top-[24%] h-[25%] rounded-sm bg-[#6b533d] shadow-md" />
               <div className="absolute left-[25%] top-0 h-[40%] w-[52%] rounded-md border-[3px] border-[#1e2932] bg-[linear-gradient(140deg,#142b36,#315566)] p-[4%]">
@@ -248,7 +248,7 @@ export function ProductArchitectureVisual() {
     <div className="surface-card relative overflow-hidden p-6 sm:p-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(216,180,115,.22),transparent_32%)]" />
       <div className="relative grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-        {[{ label: "Experience", icon: Palette, items: ["Responsive UI", "Accessible journeys", "Design system"] }, { label: "Platform", icon: Layers3, items: ["APIs", "Business rules", "Data layer"] }].map(({ label, icon: Icon, items }, index) => (
+        {[{ label: "Experience", icon: Palette, items: ["Responsive UI", "Accessible journeys", "Design system"] }, { label: "Platform", icon: Layers3, items: ["APIs", "Business rules", "Data layer"] }].map(({ label, icon: Icon, items }) => (
           <div key={label} className="rounded-xl border border-[#e7e1d9] bg-white p-5">
             <span className="icon-tile"><Icon className="size-5" aria-hidden="true" /></span>
             <h3 className="mt-4 font-extrabold">{label}</h3>

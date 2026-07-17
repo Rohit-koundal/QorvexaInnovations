@@ -26,10 +26,6 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
@@ -108,16 +104,16 @@ export function Navbar() {
                       {item.label}<ChevronDown className="size-4 text-[#b77b2c] transition group-open:rotate-180" aria-hidden="true" />
                     </summary>
                     <div className="grid border-t border-[#e7e1d9] p-2">
-                      <Link href={item.href} className="min-h-11 rounded-lg px-3 py-3 text-sm font-bold text-[#8f5d1c]">Overview</Link>
-                      {item.children.map((child) => <Link key={child.href} href={child.href} className="min-h-11 rounded-lg px-3 py-3 text-sm font-semibold text-[#59636c] hover:bg-[#fbf3e7]">{child.label}</Link>)}
+                      <Link href={item.href} onClick={() => setOpen(false)} className="min-h-11 rounded-lg px-3 py-3 text-sm font-bold text-[#8f5d1c]">Overview</Link>
+                      {item.children.map((child) => <Link key={child.href} href={child.href} onClick={() => setOpen(false)} className="min-h-11 rounded-lg px-3 py-3 text-sm font-semibold text-[#59636c] hover:bg-[#fbf3e7]">{child.label}</Link>)}
                     </div>
                   </details>
                 ) : (
-                  <Link key={item.href} href={item.href} className={cn("flex min-h-12 items-center rounded-xl border border-[#e7e1d9] bg-white px-4 text-sm font-extrabold", active && "border-[#d8b473] bg-[#fbf3e7] text-[#8f5d1c]")} aria-current={active ? "page" : undefined}>{item.label}</Link>
+                  <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className={cn("flex min-h-12 items-center rounded-xl border border-[#e7e1d9] bg-white px-4 text-sm font-extrabold", active && "border-[#d8b473] bg-[#fbf3e7] text-[#8f5d1c]")} aria-current={active ? "page" : undefined}>{item.label}</Link>
                 );
               })}
             </div>
-            <Link href={headerCta.href} className="primary-button mt-5 w-full">{headerCta.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>
+            <Link href={headerCta.href} onClick={() => setOpen(false)} className="primary-button mt-5 w-full">{headerCta.label}<ArrowRight className="size-4" aria-hidden="true" /></Link>
           </nav>
         </div>
       ) : null}

@@ -14,7 +14,7 @@ import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/Motion";
 import { BrandMark } from "@/components/shared/Logo";
 import { cn } from "@/lib/utils";
 
-type IconType = ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+type IconType = ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" }>;
 
 export function SectionHeader({
   eyebrow,
@@ -198,7 +198,7 @@ export function ImageCardGrid({
 export function ProcessTimeline({
   items,
 }: {
-  items: { title: string; description: string; deliverables?: string[]; icon: IconType }[];
+  items: { title: string; description: string; deliverables?: readonly string[]; icon: IconType }[];
 }) {
   return (
     <ol className="relative grid gap-5 lg:grid-cols-7">
