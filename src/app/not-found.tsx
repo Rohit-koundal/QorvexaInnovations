@@ -1,36 +1,26 @@
-import { Compass } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Home, Mail } from "lucide-react";
 
-import { Button } from "@/components/shared/Button";
-import { Container } from "@/components/shared/Container";
+import { BrandMark } from "@/components/shared/Logo";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
-    <section className="grid min-h-[68vh] place-items-center bg-[linear-gradient(135deg,#f8fafc,#eef2ff)] py-20">
-      <Container>
-        <div className="mx-auto max-w-xl text-center">
-          <div className="mx-auto grid size-16 place-items-center rounded-2xl bg-indigo-600 text-white shadow-xl shadow-indigo-600/20">
-            <Compass className="size-8" aria-hidden="true" />
-          </div>
-          <p className="mt-7 text-xs font-extrabold uppercase tracking-[0.2em] text-indigo-600">
-            Error 404
-          </p>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.05em] text-slate-950 sm:text-5xl">
-            This page is not on the map.
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-slate-600">
-            The address may have changed, or the page may no longer exist. Let&apos;s get you
-            back to something useful.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href="/" showArrow>
-              Return Home
-            </Button>
-            <Button href="/contact" variant="secondary">
-              Contact Us
-            </Button>
-          </div>
+    <section className="warm-grid relative isolate min-h-[72vh] overflow-hidden py-20">
+      <div className="hero-ribbon" />
+      <span className="orb ambient-drift absolute left-[18%] top-[24%] hidden sm:block" />
+      <div className="site-shell relative flex min-h-[58vh] flex-col items-center justify-center text-center">
+        <div className="relative">
+          <span className="serif block text-[clamp(7rem,22vw,15rem)] leading-none text-[#efe0c6]">404</span>
+          <BrandMark className="absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 bg-white/60 backdrop-blur" />
         </div>
-      </Container>
+        <p className="eyebrow mt-3">Page Not Found</p>
+        <h1 className="section-title mx-auto mt-4">This path does not lead to a published Qorvexa page.</h1>
+        <p className="body-lead mx-auto mt-5">The page may have moved, the link may be incomplete, or the content may not be available yet.</p>
+        <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+          <Link href="/" className="primary-button"><Home className="size-4" aria-hidden="true" />Return Home <ArrowRight className="size-4" aria-hidden="true" /></Link>
+          <Link href="/contact" className="secondary-button"><Mail className="size-4" aria-hidden="true" />Contact Qorvexa</Link>
+        </div>
+      </div>
     </section>
   );
 }

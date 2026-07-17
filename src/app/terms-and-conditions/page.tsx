@@ -8,6 +8,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms-and-conditions" },
 };
 
-export default function TermsPage() {
+export default function TermsAndConditionsPage() {
   return <TermsContent />;
 }
