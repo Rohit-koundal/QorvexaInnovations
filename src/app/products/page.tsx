@@ -1,121 +1,56 @@
 import type { Metadata } from "next";
-import { Bot, Boxes, BriefcaseBusiness, Clock3, Sparkles } from "lucide-react";
+import { BarChart3, Cloud, Gauge, Puzzle, Rocket, ShieldCheck, SlidersHorizontal } from "lucide-react";
 
-import { ProductCard } from "@/components/products/ProductCard";
-import { CTASection } from "@/components/shared/CTASection";
-import { Card } from "@/components/shared/Card";
-import { Container } from "@/components/shared/Container";
-import { PageHero } from "@/components/shared/PageHero";
-import { Reveal } from "@/components/shared/Reveal";
-import { SectionHeading } from "@/components/shared/SectionHeading";
-import { products } from "@/data/products";
+import { EditorialHero } from "@/components/site/EditorialHero";
+import { ProductDeviceStage } from "@/components/site/HeroVisuals";
+import { ProductGrid } from "@/components/site/ProductGrid";
+import { CtaBand, FeatureStrip, PlaceholderNotice, ProcessTimeline, SectionHeader } from "@/components/site/Sections";
+import { deliveryPhases, pageContent } from "@/content/pages";
+import { productContentNotes, products } from "@/content/products";
 
 export const metadata: Metadata = {
-  title: "Products Built for Real Problems",
-  description:
-    "Explore practical, scalable digital products from Qorvexa Innovations, including the Samira Collection fashion commerce platform.",
+  title: "Products & Platforms",
+  description: "Explore Qorvexa product concepts for fashion commerce, hotel management, pet commerce, bookings, and business operations.",
   alternates: { canonical: "/products" },
-  openGraph: {
-    title: "Products Built for Real Problems | Qorvexa Innovations",
-    description:
-      "Practical digital products shaped by thoughtful design and scalable technology.",
-    url: "/products",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Products Built for Real Problems | Qorvexa Innovations",
-    description:
-      "Practical digital products shaped by thoughtful design and scalable technology.",
-    images: ["/images/company/nexora-og.svg"],
-  },
 };
 
-const researchAreas = [
-  { name: "AI tools", icon: Bot },
-  { name: "Automation", icon: Sparkles },
-  { name: "Business software", icon: BriefcaseBusiness },
-  { name: "Digital commerce", icon: Boxes },
-];
+const phaseIcons = [Gauge, SlidersHorizontal, Puzzle, Rocket, BarChart3, Cloud, ShieldCheck];
 
 export default function ProductsPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Products"
-        title="Products Built for Real Problems"
-        description="Our products are designed to solve practical challenges through technology, thoughtful design, and scalable architecture."
+      <EditorialHero
+        {...pageContent.products.hero}
+        visual={<ProductDeviceStage mode="products" />}
+        primary={{ label: "Explore Products", href: "#product-collection" }}
+        secondary={{ label: "Book a Consultation", href: "/contact" }}
       />
 
-      <section className="bg-white py-20 sm:py-24">
-        <Container>
-          <SectionHeading
-            eyebrow="Current Product"
-            title="Our product portfolio"
-            description="We are starting with focused products that connect strong customer experiences with dependable business operations."
-          />
-
-          <div className="mt-10 space-y-8">
-            {products.map((product, index) => (
-              <Reveal key={product.slug} delay={index * 0.06}>
-                <ProductCard product={product} priority={index === 0} />
-              </Reveal>
-            ))}
-          </div>
-        </Container>
+      <section id="product-collection" className="site-section scroll-mt-24 bg-white">
+        <div className="site-shell">
+          <SectionHeader eyebrow="Product Collection" title="Platform concepts for focused business workflows." description="Each product entry has a reusable detail template, editable modules, and clear placeholders for approved screenshots, technology, and release information." align="center" />
+          <div className="mt-8"><PlaceholderNotice>{productContentNotes.status} Product availability is not implied by this catalogue.</PlaceholderNotice></div>
+          <div className="mt-10"><ProductGrid items={products} /></div>
+        </div>
       </section>
 
-      <section
-        id="upcoming"
-        className="scroll-mt-24 border-y border-slate-200 bg-slate-50 py-20 sm:py-24"
-      >
-        <Container>
-          <Reveal>
-            <Card className="relative overflow-hidden bg-slate-950 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.18)] sm:p-10 lg:p-12">
-              <div className="absolute -right-20 -top-24 size-72 rounded-full bg-indigo-500/20 blur-3xl" />
-              <div className="absolute -bottom-24 left-1/3 size-64 rounded-full bg-cyan-500/10 blur-3xl" />
-              <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
-                <div>
-                  <span className="inline-flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-cyan-300">
-                    <Clock3 className="size-6" aria-hidden="true" />
-                  </span>
-                  <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-300">
-                    In Research &amp; Development
-                  </p>
-                  <h2 className="mt-4 text-balance text-3xl font-extrabold tracking-[-0.045em] text-white sm:text-4xl">
-                    More Products Coming Soon
-                  </h2>
-                  <p className="mt-5 max-w-xl text-base leading-8 text-slate-300">
-                    We are researching and building new products across AI, automation, business
-                    software, and digital commerce.
-                  </p>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {researchAreas.map(({ name, icon: Icon }) => (
-                    <div
-                      key={name}
-                      className="flex min-h-24 items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-white"
-                    >
-                      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/20 text-indigo-200">
-                        <Icon className="size-5" aria-hidden="true" />
-                      </span>
-                      <span className="font-extrabold">{name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Card>
-          </Reveal>
-        </Container>
+      <section className="site-section-compact border-y border-[#e7e1d9] bg-[#f8f2e9]">
+        <div className="site-shell"><FeatureStrip items={[
+          { title: "Secure by Design", description: "Access, validation, and data boundaries are planned from the start.", icon: ShieldCheck },
+          { title: "Configurable", description: "Modules can be shaped around approved operational requirements.", icon: SlidersHorizontal },
+          { title: "Analytics-Ready", description: "Reporting needs are defined alongside the workflows that create the data.", icon: BarChart3 },
+          { title: "Integration-Friendly", description: "External systems are connected through clearly scoped interfaces.", icon: Puzzle },
+        ]} /></div>
       </section>
 
-      <CTASection
-        title="Have a product challenge worth exploring?"
-        description="Tell us about the people, workflow, or business problem you want to improve. We can start with the problem and work forward."
-        primaryLabel="Start a Conversation"
-        secondaryLabel="See How We Work"
-        secondaryHref="/how-we-work"
-      />
+      <section className="site-section bg-white">
+        <div className="site-shell">
+          <SectionHeader eyebrow="From Idea to Product" title="Designed, built, deployed, and improved as one connected journey." description="The exact timeline and technology are confirmed per product; the delivery sequence remains transparent from the first decision through continued growth." />
+          <div className="mt-10"><ProcessTimeline items={deliveryPhases.map((phase, index) => ({ ...phase, icon: phaseIcons[index] }))} /></div>
+        </div>
+      </section>
+
+      <CtaBand title="Ready to shape your next digital product?" description="Let’s turn a clear business problem into an understandable product plan." />
     </>
   );
 }

@@ -4,41 +4,48 @@ import { cn } from "@/lib/utils";
 
 type LogoProps = {
   inverse?: boolean;
+  compact?: boolean;
   className?: string;
 };
 
-export function Logo({ inverse = false, className }: LogoProps) {
+export function BrandMark({ className }: { className?: string }) {
+  return (
+    <span className={cn("relative grid size-11 shrink-0 place-items-center", className)} aria-hidden="true">
+      <span className="absolute size-8 rotate-30 border-[3px] border-[#b77b2c] [clip-path:polygon(25%_0,75%_0,100%_25%,100%_75%,75%_100%,25%_100%,0_75%,0_25%)]" />
+      <span className="absolute size-[1.15rem] rotate-30 border-2 border-[#b77b2c] [clip-path:polygon(25%_0,75%_0,100%_25%,100%_75%,75%_100%,25%_100%,0_75%,0_25%)]" />
+      <span className="absolute bottom-[6px] right-[4px] h-[3px] w-[15px] rotate-45 rounded-full bg-[#b77b2c]" />
+    </span>
+  );
+}
+
+export function Logo({ inverse = false, compact = false, className }: LogoProps) {
   return (
     <Link
       href="/"
-      className={cn(
-        "group inline-flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2",
-        className,
-      )}
+      className={cn("group inline-flex min-h-11 items-center gap-2.5 rounded-lg", className)}
       aria-label="Qorvexa Innovations home"
     >
-      <span className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-500 text-white shadow-[0_8px_24px_rgba(79,70,229,0.28)]">
-        <span className="absolute -right-2 -top-2 size-6 rounded-full border border-white/30" />
-        <span className="relative text-lg font-extrabold tracking-[-0.08em]">Q</span>
-      </span>
-      <span className="leading-none">
-        <span
-          className={cn(
-            "block text-[1.05rem] font-extrabold tracking-[-0.035em]",
-            inverse ? "text-white" : "text-slate-950",
-          )}
-        >
-          Qorvexa
+      <BrandMark />
+      {!compact ? (
+        <span className="leading-none">
+          <span
+            className={cn(
+              "block text-[1.08rem] font-extrabold tracking-[0.13em]",
+              inverse ? "text-white" : "text-[#071522]",
+            )}
+          >
+            QORVEXA
+          </span>
+          <span
+            className={cn(
+              "mt-1.5 block text-[0.56rem] font-bold uppercase tracking-[0.39em]",
+              inverse ? "text-white/60" : "text-[#293440]",
+            )}
+          >
+            Innovations
+          </span>
         </span>
-        <span
-          className={cn(
-            "mt-1 block text-[0.6rem] font-bold uppercase tracking-[0.22em]",
-            inverse ? "text-slate-400" : "text-slate-500",
-          )}
-        >
-          Innovations
-        </span>
-      </span>
+      ) : null}
     </Link>
   );
 }
