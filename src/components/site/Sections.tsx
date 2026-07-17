@@ -3,15 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  Building2,
+  CalendarCheck,
   Check,
   ChevronRight,
   CircleCheck,
+  Code2,
+  Globe2,
+  Layers3,
   Mail,
+  MonitorSmartphone,
+  Palette,
+  PawPrint,
+  ShoppingBag,
   Sparkles,
+  Workflow,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/Motion";
 import { BrandMark } from "@/components/shared/Logo";
+import { Luxury3DIcon } from "@/components/ui/Luxury3DIcon";
 import { cn } from "@/lib/utils";
 
 type IconType = ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" }>;
@@ -43,20 +55,38 @@ export function SectionHeader({
 }
 
 export function TrustStrip({ items }: { items: string[] }) {
+  const iconByLabel: Record<string, LucideIcon> = {
+    Commerce: ShoppingBag,
+    Hospitality: Building2,
+    "Pet Care": PawPrint,
+    Booking: CalendarCheck,
+    "Business Sites": Globe2,
+    Operations: Workflow,
+    "Custom Software": Code2,
+    "Web Apps": MonitorSmartphone,
+    "Product Design": Palette,
+  };
+
   return (
     <section className="border-y border-[#e7e1d9] bg-white" aria-label="Qorvexa solution areas">
       <div className="site-shell py-7">
         <p className="mb-5 text-[.64rem] font-extrabold uppercase tracking-[.22em] text-[#8a9096]">
           Designed for modern business models
         </p>
-        <div className="grid grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
-          {items.map((item) => (
-            <div key={item} className="flex items-center gap-2.5 text-xs font-extrabold tracking-[.12em] text-[#626970] uppercase">
-              <span className="size-1.5 rounded-full bg-[#b77b2c]" />
-              {item}
-            </div>
-          ))}
-        </div>
+        <StaggerGrid className={`grid grid-cols-2 gap-3 sm:grid-cols-3 ${items.length === 5 ? "lg:grid-cols-5" : "lg:grid-cols-6"}`}>
+          {items.map((item) => {
+            const Icon = iconByLabel[item] ?? Layers3;
+            return (
+              <StaggerItem key={item}>
+                <div className="group relative flex min-h-[4.65rem] items-center gap-3 rounded-xl border border-[#eadfce] bg-[linear-gradient(145deg,#fff_0%,#fdf9f2_58%,#f1e3ce_100%)] px-3 py-2.5 shadow-[inset_0_1px_0_white,inset_0_-8px_14px_rgba(183,123,44,.07),0_8px_18px_rgba(7,21,34,.07)] transition duration-300 [perspective:500px] hover:-translate-y-1 hover:border-[#d8b473] hover:shadow-[inset_0_1px_0_white,0_14px_26px_rgba(7,21,34,.12)]">
+                  <span className="absolute inset-x-[9%] -bottom-[4px] h-2 rounded-b-xl bg-[#9d6a27]/20 blur-[1px]" aria-hidden="true" />
+                  <Luxury3DIcon icon={Icon} size="sm" glow />
+                  <span className="relative text-[.68rem] font-extrabold uppercase leading-tight tracking-[.08em] text-[#4d5861] sm:text-xs">{item}</span>
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </StaggerGrid>
       </div>
     </section>
   );

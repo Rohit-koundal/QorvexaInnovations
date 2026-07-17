@@ -44,7 +44,8 @@ export default function HomePage() {
     <>
       <EditorialHero
         {...pageContent.home.hero}
-        visual={<ProductDeviceStage mode="platform" />}
+        visual={<ProductDeviceStage mode="platform" cinematic />}
+        cinematic
         priority
         primary={{ label: "Explore Our Services", href: "/services" }}
         secondary={{ label: "View Our Work", href: "/portfolio" }}

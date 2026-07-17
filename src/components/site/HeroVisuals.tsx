@@ -18,10 +18,15 @@ import {
 } from "lucide-react";
 
 import { BrandMark } from "@/components/shared/Logo";
+import { ProductDeviceStage3D } from "@/components/hero/ProductDeviceStage3D";
+import { Luxury3DIcon } from "@/components/ui/Luxury3DIcon";
+
+export { ProductDeviceStage3D as ProductDeviceStage };
 
 const chartBars = [34, 51, 42, 68, 57, 77, 64, 86, 74, 93];
 
-export function ProductDeviceStage({
+/** @deprecated Use ProductDeviceStage, which now resolves to the dimensional device system. */
+export function LegacyProductDeviceStage({
   mode = "platform",
 }: {
   mode?: "platform" | "services" | "solutions" | "products";
@@ -139,7 +144,7 @@ export function ProcessStackVisual() {
             className={`absolute left-0 right-0 flex h-[18%] items-center justify-center rounded-[1.3rem] border border-white bg-gradient-to-br ${color} shadow-[0_16px_28px_rgba(7,21,34,.14)]`}
             style={{ top: `${index * 14.3}%`, transform: `rotateX(57deg) translateZ(${(processLayers.length - index) * 9}px)`, zIndex: processLayers.length - index }}
           >
-            <Icon className={`size-7 ${index === processLayers.length - 1 ? "text-white" : "text-[#b77b2c]"}`} aria-hidden="true" />
+            <Luxury3DIcon icon={Icon} size="sm" variant={index === processLayers.length - 1 ? "navy" : "ivory"} glow={index === processLayers.length - 1} />
           </div>
         ))}
       </div>
@@ -233,11 +238,15 @@ export function StudioScene({
       )}
 
       <div className="absolute bottom-3 left-3 right-3 grid grid-cols-2 gap-2 sm:left-auto sm:right-4 sm:top-[14%] sm:bottom-auto sm:w-[35%] sm:grid-cols-1">
-        {labels.slice(0, 4).map((label, index) => (
-          <div key={label} className="surface-card flex items-center gap-2 px-3 py-2 text-[.58rem] font-extrabold shadow-lg" style={{ transform: `translateX(${index % 2 ? 8 : 0}px)` }}>
-            <span className="size-2 rounded-full bg-[#b77b2c]" />{label}
-          </div>
-        ))}
+        {labels.slice(0, 4).map((label, index) => {
+          const Icon = [Compass, Palette, Code2, ShieldCheck][index];
+          return (
+            <div key={label} className="relative flex items-center gap-1.5 rounded-xl border border-white/90 bg-[linear-gradient(145deg,rgba(255,255,255,.97),rgba(245,237,225,.92))] px-2 py-1.5 text-[.56rem] font-extrabold shadow-[inset_0_1px_0_white,0_11px_22px_rgba(7,21,34,.15)] backdrop-blur" style={{ transform: `translateX(${index % 2 ? 8 : 0}px) translateZ(${36 + index * 6}px)` }}>
+              <Luxury3DIcon icon={Icon} size="sm" className="-m-1 scale-[.72]" />
+              {label}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

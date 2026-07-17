@@ -6,7 +6,7 @@ export const pageContent = {
       accent: "Elevate Businesses.",
       description: "Qorvexa Innovations designs and engineers custom software, high-performance web applications, commerce platforms, hospitality systems, mobile experiences, and scalable digital products around real business needs.",
     },
-    solutionAreas: ["Commerce", "Hospitality", "Pet Care", "Booking", "Business Sites", "Operations"],
+    solutionAreas: ["Commerce", "Hospitality", "Pet Care", "Booking", "Business Sites"],
   },
   about: {
     hero: {

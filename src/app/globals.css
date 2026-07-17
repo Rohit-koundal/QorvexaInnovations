@@ -170,21 +170,49 @@ a {
 }
 
 .icon-tile {
+  position: relative;
   display: grid;
   width: 3rem;
   height: 3rem;
   flex: 0 0 auto;
   place-items: center;
-  border: 1px solid rgba(183, 123, 44, 0.22);
+  border: 1px solid rgba(183, 123, 44, 0.3);
   border-radius: 0.85rem;
   color: var(--gold-deep);
-  background: linear-gradient(145deg, #fff, #fbf3e7);
-  box-shadow: inset 0 1px 0 #fff;
-  transition: transform 300ms ease;
+  background: linear-gradient(145deg, #fff 0%, #fbf3e7 58%, #ead4b2 100%);
+  box-shadow:
+    inset 0 1px 1px #fff,
+    inset 0 -7px 12px rgba(143, 93, 28, 0.1),
+    0 5px 0 rgba(143, 93, 28, 0.16),
+    0 10px 18px rgba(7, 21, 34, 0.11);
+  transform-style: preserve-3d;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.icon-tile::before {
+  position: absolute;
+  inset: 0.3rem 0.42rem auto;
+  height: 26%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  filter: blur(3px);
+  content: "";
+  pointer-events: none;
+}
+
+.icon-tile svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 1px rgba(255, 255, 255, 0.75));
 }
 
 .interactive-card:hover .icon-tile {
-  transform: rotate(-4deg) translateY(-2px);
+  box-shadow:
+    inset 0 1px 1px #fff,
+    inset 0 -7px 12px rgba(143, 93, 28, 0.08),
+    0 7px 0 rgba(143, 93, 28, 0.16),
+    0 15px 24px rgba(7, 21, 34, 0.14);
+  transform: perspective(360px) rotateX(-7deg) rotateY(6deg) translate3d(0, -4px, 12px);
 }
 
 .primary-button,
@@ -202,6 +230,30 @@ a {
   font-weight: 800;
   line-height: 1;
   transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.primary-button,
+.gold-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.primary-button::after,
+.gold-button::after {
+  position: absolute;
+  inset: -45% auto -45% -35%;
+  width: 24%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+  content: "";
+  pointer-events: none;
+  transform: skewX(-18deg) translateX(-220%);
+  transition: transform 720ms cubic-bezier(.22,1,.36,1);
+}
+
+.primary-button:hover::after,
+.gold-button:hover::after {
+  transform: skewX(-18deg) translateX(720%);
 }
 
 .primary-button {
@@ -268,7 +320,6 @@ a {
   bottom: 5%;
   border: 2px solid rgba(216, 180, 115, 0.2);
   border-radius: 50%;
-  filter: blur(0.2px);
   pointer-events: none;
   transform: rotate(-14deg);
 }

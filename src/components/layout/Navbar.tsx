@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
@@ -16,13 +16,28 @@ function isActive(pathname: string, href: string, exact?: boolean) {
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const scrolledRef = useRef<boolean | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
+    let frame: number | null = null;
+    const updateScrollState = () => {
+      frame = null;
+      const nextScrolled = window.scrollY > 10;
+      if (nextScrolled === scrolledRef.current) return;
+      scrolledRef.current = nextScrolled;
+      if (nextScrolled) headerRef.current?.setAttribute("data-scrolled", "true");
+      else headerRef.current?.removeAttribute("data-scrolled");
+    };
+    const onScroll = () => {
+      if (frame === null) frame = window.requestAnimationFrame(updateScrollState);
+    };
+    updateScrollState();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -39,7 +54,10 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className={cn("sticky top-0 z-50 border-b transition duration-300", scrolled ? "border-[#e7e1d9] bg-[#fdfbf8]/95 shadow-[0_12px_36px_rgba(7,21,34,.06)] backdrop-blur-xl" : "border-transparent bg-[#fdfbf8]/90 backdrop-blur-md")}>
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 border-b border-transparent bg-[#fdfbf8]/90 backdrop-blur-md transition duration-300 data-[scrolled=true]:border-[#e7e1d9] data-[scrolled=true]:bg-[#fdfbf8]/95 data-[scrolled=true]:shadow-[0_12px_36px_rgba(7,21,34,.06)] data-[scrolled=true]:backdrop-blur-xl"
+    >
       <div className="site-shell flex h-[76px] items-center justify-between gap-5">
         <Logo className="shrink-0" />
 
