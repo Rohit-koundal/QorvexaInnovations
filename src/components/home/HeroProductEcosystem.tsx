@@ -29,7 +29,7 @@ export function HeroProductEcosystem() {
     <div
       className="relative mx-auto w-full max-w-[620px] lg:ml-auto"
       role="img"
-      aria-label="Illustration of Nexora's connected product workspace with catalogue, orders, and customer experience systems"
+      aria-label="Illustration of Qorvexa's connected product workspace with catalogue, orders, and customer experience systems"
     >
       <div
         className="absolute -left-8 top-10 size-36 rounded-full bg-indigo-400/20 blur-3xl sm:size-52"
@@ -64,7 +64,7 @@ export function HeroProductEcosystem() {
               <span className="grid size-7 place-items-center rounded-lg bg-indigo-500 text-[0.65rem] font-black">
                 N
               </span>
-              <span className="text-xs font-extrabold">Nexora</span>
+              <span className="text-xs font-extrabold">Qorvexa</span>
             </div>
             <nav aria-label="Product workspace preview" className="space-y-1.5">
               {workspaceItems.map(({ label, icon: Icon, active }) => (

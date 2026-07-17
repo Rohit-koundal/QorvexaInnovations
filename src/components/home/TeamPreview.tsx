@@ -12,7 +12,7 @@ export function TeamPreview() {
         <Reveal className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <SectionHeading
             eyebrow="Leadership"
-            title="The People Behind Nexora"
+            title="The People Behind Qorvexa"
             description="A focused founding team bringing product strategy, engineering, design, and practical business thinking together."
           />
           <Button href="/team" variant="secondary" showArrow className="w-full sm:w-fit">

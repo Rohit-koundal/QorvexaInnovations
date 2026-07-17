@@ -254,7 +254,7 @@ export const referenceOnlyAssets = [
   },
   {
     id: "legacy-open-graph",
-    src: "/images/company/nexora-og.svg",
+    src: null,
     alt: "Legacy website preview",
     kind: "reference",
     verification: "placeholder",

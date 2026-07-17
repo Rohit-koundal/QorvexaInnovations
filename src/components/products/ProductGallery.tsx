@@ -200,7 +200,7 @@ export function ProductGallery() {
           description="Representative interface mockups show how Samira can keep shopping focused for customers and operations clear for teams."
         />
         <p className="mt-4 text-sm font-medium text-slate-500">
-          These are illustrative product previews created for the Nexora website.
+          These are illustrative product previews created for the Qorvexa website.
         </p>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-12">
