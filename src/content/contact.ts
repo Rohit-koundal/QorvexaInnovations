@@ -77,23 +77,34 @@ export const contactFormFields = [
   { name: "consent", label: "Consent", type: "checkbox", required: true },
 ] as const;
 
-export const projectTypeOptions = [
-  "Custom Software Development",
-  "Web Application Development",
-  "E-Commerce Website Development",
-  "Hotel Management System",
-  "Static Business Website",
-  "Pet Shop Website",
-  "Mobile Application Development",
-  "UI/UX Design",
-  "Cloud Solution",
-  "API Development or Integration",
-  "Business Automation",
-  "Admin Dashboard",
+export const contactProjectTypes = [
+  "Custom Software",
+  "Web Application",
+  "E-Commerce",
+  "Hotel Management",
+  "Mobile Application",
   "Booking Platform",
-  "Maintenance and Support",
-  "Not Sure Yet",
-].map(
+  "UI/UX Design",
+  "Other",
+] as const;
+
+export const contactBudgetRanges = [
+  "Not decided yet",
+  "Under ₹1 lakh",
+  "₹1–5 lakh",
+  "₹5–15 lakh",
+  "₹15 lakh+",
+] as const;
+
+export const contactTimelines = [
+  "Exploring options",
+  "Within 1 month",
+  "1–3 months",
+  "3–6 months",
+  "6+ months",
+] as const;
+
+export const projectTypeOptions = contactProjectTypes.map(
   (label) =>
     ({
       label,
@@ -104,9 +115,21 @@ export const projectTypeOptions = [
     }) satisfies SelectOption,
 );
 
-export const budgetRangeOptions: readonly SelectOption[] = [];
+export const budgetRangeOptions: readonly SelectOption[] = contactBudgetRanges.map((label) => ({
+  label,
+  value: label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+  verification: "unverified",
+  source: "project-brief",
+  published: true,
+}));
 
-export const timelineOptions: readonly SelectOption[] = [];
+export const timelineOptions: readonly SelectOption[] = contactTimelines.map((label) => ({
+  label,
+  value: label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+  verification: "unverified",
+  source: "project-brief",
+  published: true,
+}));
 
 export const contactIntegration = {
   recipientEnvironmentVariable: "CONTACT_EMAIL_TO",

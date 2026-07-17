@@ -1,31 +1,12 @@
 import { z } from "zod";
 
-export const projectTypes = [
-  "Custom Software",
-  "Web Application",
-  "E-Commerce",
-  "Hotel Management",
-  "Mobile Application",
-  "Booking Platform",
-  "UI/UX Design",
-  "Other",
-] as const;
+import { contactBudgetRanges, contactProjectTypes, contactTimelines } from "@/content/contact";
 
-export const budgetRanges = [
-  "Not decided yet",
-  "Under ₹1 lakh",
-  "₹1–5 lakh",
-  "₹5–15 lakh",
-  "₹15 lakh+",
-] as const;
+export const projectTypes = contactProjectTypes;
 
-export const projectTimelines = [
-  "Exploring options",
-  "Within 1 month",
-  "1–3 months",
-  "3–6 months",
-  "6+ months",
-] as const;
+export const budgetRanges = contactBudgetRanges;
+
+export const projectTimelines = contactTimelines;
 
 export const contactSchema = z.object({
   fullName: z.string().trim().min(2, "Please enter your full name.").max(100),
