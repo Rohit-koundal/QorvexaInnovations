@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -12,7 +11,7 @@ export type PortfolioItem = {
   title: string;
   category: string;
   summary: string;
-  image: string;
+  image?: string;
   imageAlt: string;
   challenge: string;
   solution: string;
@@ -48,8 +47,11 @@ export function PortfolioFilter({ items }: { items: PortfolioItem[] }) {
         <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((item) => (
             <article key={item.slug} className="surface-card interactive-card group overflow-hidden">
-              <div className="relative aspect-[16/9] overflow-hidden bg-[#f8f2e9]">
-                <Image src={item.image} alt={item.imageAlt} fill sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.035]" />
+              <div className="relative aspect-[16/9] overflow-hidden bg-[linear-gradient(145deg,#f8f2e9,#e9dcc8)]" role="img" aria-label={item.imageAlt}>
+                <div className="absolute inset-[9%] overflow-hidden rounded-lg border border-white/70 bg-white shadow-[0_18px_32px_rgba(7,21,34,.13)] transition duration-500 group-hover:scale-[1.025]">
+                  <div className="flex h-[16%] items-center justify-between border-b border-[#e7e1d9] px-[4%]"><span className="size-2 rounded-full bg-[#b77b2c]"/><span className="h-1.5 w-1/3 rounded bg-[#e7e1d9]"/></div>
+                  <div className="grid h-[84%] grid-cols-[25%_1fr]"><div className="border-r border-[#e7e1d9] bg-[#071522] p-[10%]"><div className="size-5 rounded bg-[#b77b2c]"/><div className="mt-[20%] grid gap-[14%]">{[1,2,3,4].map(value => <span key={value} className="h-1.5 rounded bg-white/15"/>)}</div></div><div className="p-[6%]"><div className="grid grid-cols-3 gap-[4%]">{[1,2,3].map(value => <span key={value} className="aspect-[1.5/1] rounded bg-[#f6f1ea]"/>)}</div><div className="mt-[5%] grid grid-cols-[1.2fr_.8fr] gap-[5%]"><div className="flex h-full min-h-16 items-end gap-[4%] rounded bg-[#faf7f2] p-[6%]">{[42,70,55,86,68].map(height => <span key={height} className="flex-1 rounded-t-sm bg-[#d8b473]" style={{height:`${height}%`}}/>)}</div><div className="rounded bg-[#f6f1ea]"/></div></div></div>
+                </div>
               </div>
               <div className="p-6">
                 <p className="text-[.68rem] font-extrabold uppercase tracking-[.12em] text-[#b77b2c]">{item.category}</p>
