@@ -1,27 +1,31 @@
 import type { MetadataRoute } from "next";
 
+import { products } from "@/content/products";
 import { SITE_URL } from "@/lib/constants";
 
 export const dynamic = "force-static";
 
-const routes = [
+const coreRoutes = [
   "",
   "/about",
+  "/services",
+  "/solutions",
   "/products",
-  "/products/samira-collection",
-  "/how-we-work",
+  "/process",
+  "/portfolio",
   "/team",
   "/careers",
   "/contact",
   "/privacy-policy",
-  "/terms",
+  "/terms-and-conditions",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route, index) => ({
+  const productRoutes = products.map((product) => `/products/${product.slug}`);
+  return [...coreRoutes, ...productRoutes].map((route) => ({
     url: `${SITE_URL}${route}`,
-    lastModified: new Date("2026-07-14"),
-    changeFrequency: index === 0 ? "weekly" : "monthly",
-    priority: index === 0 ? 1 : route === "/products/samira-collection" ? 0.9 : 0.7,
+    lastModified: new Date("2026-07-17"),
+    changeFrequency: route === "" ? "weekly" : "monthly",
+    priority: route === "" ? 1 : route.startsWith("/products/") ? 0.8 : 0.7,
   }));
 }
