@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/newsreader";
 
 :root {
   --ink: #071522;
@@ -15,6 +16,8 @@
   --line: #e7e1d9;
   --navy: #031b2d;
   --shadow: 0 20px 60px rgba(7, 21, 34, 0.07);
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Newsreader Variable", Newsreader, Georgia, serif;
 }
 
 * {
@@ -32,10 +35,13 @@ body {
   overflow-x: hidden;
   background: var(--ivory);
   color: var(--ink);
-  font-family: "Manrope Variable", Manrope, Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
+  font-feature-settings: "ss01" on, "cv11" on;
+  letter-spacing: -0.011em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -68,7 +74,8 @@ a {
 .serif,
 .display-title,
 .section-title {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-serif);
+  font-feature-settings: "liga" on, "kern" on;
 }
 
 .site-shell {
@@ -354,7 +361,7 @@ a {
 
 .legal-copy h2 {
   margin-top: 2.5rem;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-serif);
   color: var(--ink);
   font-size: 1.8rem;
   font-weight: 500;
